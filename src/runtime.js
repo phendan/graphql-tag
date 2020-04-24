@@ -62,7 +62,7 @@ function oneQuery(doc, operationName) {
   // it or the fragments it references
   const opRefs = definitionRefs[operationName] || new Set();
   const allRefs = new Set();
-  const newRefs = new Set();
+  let newRefs = new Set();
 
   // IE 11 doesn't support "new Set(iterable)", so we add the members of opRefs to newRefs one by one
   opRefs.forEach((refName) => {
@@ -94,6 +94,20 @@ function oneQuery(doc, operationName) {
   return newDoc;
 }
 
+function unique(defs, names) {
+  return defs.filter((def) => {
+    if (def.kind !== "FragmentDefinition") return true;
+    const name = def.name.value;
+    if (names.has(name)) {
+      return false;
+    } else {
+      names.add(name);
+      return true;
+    }
+  });
+}
+
 module.exports = {
   oneQuery,
+  unique,
 };

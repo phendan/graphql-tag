@@ -1,6 +1,6 @@
 const gql = require('../src');
 const loader = require('../loader');
-const runtime = require('../lib/runtime');
+const runtime = require('../src/runtime');
 const vm = require('vm');
 
 describe('gql', () => {
@@ -410,6 +410,8 @@ describe('gql', () => {
 
       const test_require = (path) => {
         switch (path) {
+        case 'graphql-tag/lib/runtime':
+          return runtime;
         case './friends.graphql':
           return load(test_require, [
             '#import "./person.graphql"',
