@@ -60,23 +60,20 @@ function oneQuery(doc, operationName) {
 
   // Now, for the operation we're running, find any fragments referenced by
   // it or the fragments it references
-  const opRefs = definitionRefs[operationName] || new Set();
   const allRefs = new Set();
-  let newRefs = new Set();
-
-  // IE 11 doesn't support "new Set(iterable)", so we add the members of opRefs to newRefs one by one
-  opRefs.forEach((refName) => {
-    newRefs.add(refName);
-  });
+  let newRefs = definitionRefs[operationName] || new Set();
 
   while (newRefs.size > 0) {
     const prevRefs = newRefs;
     newRefs = new Set();
 
     prevRefs.forEach((refName) => {
-      if (!allRefs.has(refName)) {
-        allRefs.add(refName);
-        const childRefs = definitionRefs[refName] || new Set();
+      if (allRefs.has(refName)) {
+        return;
+      }
+      allRefs.add(refName);
+      const childRefs = definitionRefs[refName];
+      if (childRefs) {
         childRefs.forEach((childRef) => {
           newRefs.add(childRef);
         });
