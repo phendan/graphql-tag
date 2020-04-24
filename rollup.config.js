@@ -1,11 +1,19 @@
-export default {
+export default [{
   entry: 'src/index.js',
-  dest: 'lib/graphql-tag.umd.js',
-  format: 'umd',
+  dest: 'lib/graphql-tag.js',
+  format: 'cjs',
   sourceMap: true,
   moduleName: 'graphql-tag',
   onwarn
-};
+},
+{
+  entry: 'src/runtime.js',
+  dest: 'lib/runtime.js',
+  format: 'cjs',
+  sourceMap: true,
+  onwarn
+}
+];
 
 function onwarn(message) {
   const suppressed = [
