@@ -1,9 +1,8 @@
 export default [{
   entry: 'src/index.js',
-  dest: 'lib/graphql-tag.js',
+  dest: 'lib/index.js',
   format: 'cjs',
   sourceMap: true,
-  moduleName: 'graphql-tag',
   onwarn
 },
 {

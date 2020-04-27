@@ -1,6 +1,6 @@
 {
   "name": "@zendesk/graphql-tag",
-  "version": "2.10.5",
+  "version": "2.10.6",
   "description": "A JavaScript template literal tag that parses GraphQL queries",
   "main": "./lib",
   "module": "./src",
