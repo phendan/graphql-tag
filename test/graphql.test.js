@@ -5,7 +5,7 @@ const vm = require("vm");
 
 describe("gql", () => {
   const require = jest.fn((path) => {
-    if (path === "graphql-tag/lib/runtime") {
+    if (path === "@zendesk/graphql-tag/lib/runtime") {
       return runtime;
     }
   });
@@ -231,7 +231,7 @@ describe("gql", () => {
     const jsSource = loader.call({ cacheable() {} }, query);
     const module = { exports: undefined };
     const require = jest.fn((path) => {
-      if (path === "graphql-tag/lib/runtime") {
+      if (path === "@zendesk/graphql-tag/lib/runtime") {
         return runtime;
       }
       return gql`
@@ -267,7 +267,7 @@ describe("gql", () => {
     const jsSource = loader.call({ cacheable() {} }, query);
     const module = { exports: undefined };
     const require = jest.fn((path) => {
-      if (path === "graphql-tag/lib/runtime") {
+      if (path === "@zendesk/graphql-tag/lib/runtime") {
         return runtime;
       }
       return gql`
@@ -565,7 +565,7 @@ describe("gql", () => {
 
       const test_require = (path) => {
         switch (path) {
-          case "graphql-tag/lib/runtime":
+          case "@zendesk/graphql-tag/lib/runtime":
             return runtime;
           case "./friends.graphql":
             return load(

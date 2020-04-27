@@ -31,7 +31,7 @@ module.exports = function (source) {
   this.cacheable();
   const doc = gql`${source}`;
   let headerCode = `
-    var runtime = require('graphql-tag/lib/runtime');
+    var runtime = require('@zendesk/graphql-tag/lib/runtime');
     var doc = ${JSON.stringify(doc)};
     doc.loc.source = ${JSON.stringify(doc.loc.source)};
   `;
