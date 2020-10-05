@@ -62,6 +62,6 @@ module.exports = function (source) {
   const importOutputCode = expandImports(source, doc);
   const allCode =
     headerCode + os.EOL + importOutputCode + os.EOL + outputCode + os.EOL;
-
+    console.log(allCode)
   return allCode;
 };
